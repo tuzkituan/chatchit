@@ -14,12 +14,11 @@ socketIo.on("connection", (socket) => {
     socket.on("sendDataClient", function (data) {
         socketIo.emit("sendDataServer", { data });
     })
-
     socket.on("disconnect", () => {
         console.log("Client disconnected"); // Khi client disconnect thì log ra terminal.
     });
 })
 
-server.listen(3000, () => {
-    console.log('Server is running at port 3000');
+server.listen(process.env.PORT || 3000, () => {
+    console.log('Server is running');
 });
